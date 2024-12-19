@@ -12,22 +12,36 @@ class AuthController extends Controller
 
     public function register(Request $request)
 {
-    // Validate dữ liệu
+    // Debug input dữ liệu
+    \Log::info($request->all());
+
     $request->validate([
         'ten_dang_nhap' => 'required|string|unique:nguoi_dung',
         'mat_khau' => 'required|string|min:6',
         'email' => 'required|email|unique:nguoi_dung',
         'ho_ten' => 'required|string',
         'ma_vai_tro' => 'required|integer',
+        'so_dien_thoai' => 'nullable|string',
+        'dia_chi' => 'nullable|string',
+        'anh_dai_dien' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
     ]);
 
-    // Tạo user mới
+    // Xử lý upload ảnh đại diện
+    $avatarPath = null;
+    if ($request->hasFile('anh_dai_dien')) {
+        $file = $request->file('anh_dai_dien');
+        $avatarPath = $file->store('avatars', 'public');
+    }
+
     $user = User::create([
         'ten_dang_nhap' => $request->ten_dang_nhap,
-        'mat_khau' => Hash::make($request->mat_khau), // Mã hóa mật khẩu
+        'mat_khau' => Hash::make($request->mat_khau),
         'email' => $request->email,
         'ho_ten' => $request->ho_ten,
         'ma_vai_tro' => $request->ma_vai_tro,
+        'so_dien_thoai' => $request->so_dien_thoai,
+        'dia_chi' => $request->dia_chi,
+        'anh_dai_dien' => $avatarPath,
     ]);
 
     return response()->json([

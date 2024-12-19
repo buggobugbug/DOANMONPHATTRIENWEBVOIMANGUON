@@ -23,6 +23,9 @@ class User extends Authenticatable
         'email',
         'ho_ten',
         'ma_vai_tro',
+        'so_dien_thoai',
+        'dia_chi',
+        'anh_dai_dien',
     ];
 
     protected $hidden = [

@@ -1,0 +1,48 @@
+.form {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form input {
+    width: 90%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form input[type="file"] {
+    border: none;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 12px;
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+
+.form .button {
+    width: 90%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form .button:hover {
+    background-color: #0056b3;
+}
