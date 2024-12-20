@@ -38,11 +38,10 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
-    \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-    'throttle:api',
-    \Illuminate\Routing\Middleware\SubstituteBindings::class,
-],
-
+            \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+            'throttle:api',
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        ],
     ];
 
     /**
@@ -65,5 +64,8 @@ class Kernel extends HttpKernel
 
         // Middleware kiểm tra quyền admin
         'admin' => \App\Http\Middleware\CheckAdmin::class,
+
+        // Middleware kiểm tra vai trò (admin hoặc user thường)
+        'role' => \App\Http\Middleware\CheckRole::class,
     ];
 }

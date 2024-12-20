@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ManufacturerController;
+use App\Http\Controllers\ProductController;
 
 // Route đăng ký
 Route::post('/register', [AuthController::class, 'register']);
@@ -20,6 +23,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard']);
-    // Các route khác cho admin
 });
 
+
+// CÁC ROUTE LIÊN QUAN ĐẾN SẢN PHẨM
+Route::middleware(['auth:sanctum', 'admin'])->group(function () {
+    Route::apiResource('categories', CategoryController::class);
+    Route::apiResource('manufacturers', ManufacturerController::class);
+    Route::apiResource('products', ProductController::class);
+});
+
+Route::get('categories', [CategoryController::class, 'index']);
+Route::get('manufacturers', [ManufacturerController::class, 'index']);
+Route::get('products', [ProductController::class, 'index']);
+Route::get('products/{id}', [ProductController::class, 'show']);
