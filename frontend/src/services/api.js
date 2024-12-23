@@ -12,4 +12,19 @@ export const getCsrfToken = async () => {
     });
 };
 
+export const fetchProducts = () => api.get("/products");
+
+// Tạo sản phẩm mới
+export const createProduct = (data) => api.post("/products", data);
+
+// Lấy chi tiết sản phẩm
+export const fetchProductById = (id) => api.get(`/products/${id}`);
+
+// Cập nhật sản phẩm
+export const updateProduct = (id, data) => api.put(`/products/${id}`, data);
+
+// Xóa sản phẩm
+export const deleteProduct = (id) => api.delete(`/products/${id}`);
+
+
 export default api;

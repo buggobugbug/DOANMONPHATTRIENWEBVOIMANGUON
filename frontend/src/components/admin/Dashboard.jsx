@@ -43,6 +43,9 @@ const Dashboard = () => {
                         <Link to="/dashboard/manufacturers">Nhà sản xuất</Link>
                     </li>
                     <li>
+                        <Link to="/dashboard/create">Thêm sản phẩm mới</Link>
+                    </li>
+                    <li>
                         <Link to="/dashboard/orders">Đơn hàng</Link>
                     </li>
                     <li>
@@ -61,9 +64,6 @@ const Dashboard = () => {
                 <main>
                     <Outlet /> {/* Render các component con tại đây */}
                 </main>
-                <footer className="admin-footer">
-                    <p>© 2024 Quản trị hệ thống</p>
-                </footer>
             </div>
         </div>
     );
