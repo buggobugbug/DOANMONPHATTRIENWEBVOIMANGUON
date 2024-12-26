@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import api from '../services/api';
 import './Login.css';
 
@@ -39,26 +39,34 @@ const Login = () => {
     };
 
     return (
-        <form className="form" onSubmit={handleSubmit}>
-            <h2>Đăng Nhập</h2>
-            <input
-                type="text"
-                name="ten_dang_nhap"
-                placeholder="Tên đăng nhập"
-                value={formData.ten_dang_nhap}
-                onChange={handleChange}
-                required
-            />
-            <input
-                type="password"
-                name="mat_khau"
-                placeholder="Mật khẩu"
-                value={formData.mat_khau}
-                onChange={handleChange}
-                required
-            />
-            <button type="submit" className="button">Đăng Nhập</button>
-        </form>
+        <div className="login-container">
+            <form className="form" onSubmit={handleSubmit}>
+                <h2>Đăng Nhập</h2>
+                <input
+                    type="text"
+                    name="ten_dang_nhap"
+                    placeholder="Tên đăng nhập"
+                    value={formData.ten_dang_nhap}
+                    onChange={handleChange}
+                    required
+                />
+                <input
+                    type="password"
+                    name="mat_khau"
+                    placeholder="Mật khẩu"
+                    value={formData.mat_khau}
+                    onChange={handleChange}
+                    required
+                />
+                <button type="submit" className="button">Đăng Nhập</button>
+                <p className="mt-3">
+                    Chưa có tài khoản?{' '}
+                    <Link to="/register" className="text-primary">
+                        Đăng ký ngay
+                    </Link>
+                </p>
+            </form>
+        </div>
     );
 };
 

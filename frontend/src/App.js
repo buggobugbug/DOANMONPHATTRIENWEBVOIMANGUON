@@ -6,6 +6,9 @@ import Dashboard from './components/admin/Dashboard';
 import Home from './components/Home';
 import Products from './components/admin/Products';
 import CreateProduct from './components/admin/CreateProduct';
+import EditProduct from './components/admin/EditProduct';
+import Categories from './components/admin/Categories';
+import Manufacturers from './components/admin/Manufacturers';
 import PrivateRoute from './components/PrivateRoute';
 
 const App = () => {
@@ -30,6 +33,13 @@ const App = () => {
                     {/* Route con cho sản phẩm */}
                     <Route path="products" element={<Products />} />
                     <Route path="create" element={<CreateProduct />} />
+                    <Route path="edit/:id" element={<EditProduct />} />
+
+                    {/* Route con cho Loại sản phẩm */}
+                    <Route path="categories" element={<Categories />} />
+
+                    {/* Route con cho Nhà sản xuất */}
+                    <Route path="manufacturers" element={<Manufacturers />} />
                 </Route>
 
                 {/* Route Home */}

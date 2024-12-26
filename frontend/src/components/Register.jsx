@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link từ react-router-dom
 import api from '../services/api';
 import './Register.css';
 
@@ -31,7 +32,7 @@ const Register = () => {
             Object.keys(formData).forEach((key) => {
                 data.append(key, formData[key]); // Kiểm tra từng trường
             });
-    
+
             const response = await api.post('/register', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
@@ -100,6 +101,12 @@ const Register = () => {
                 onChange={handleChange}
             />
             <button type="submit" className="button">Đăng Ký</button>
+            <p className="mt-3">
+                Đã có tài khoản?{' '}
+                <Link to="/login" className="text-primary">
+                    Đăng nhập ngay
+                </Link>
+            </p>
         </form>
     );
 };

@@ -43,6 +43,7 @@ const Products = () => {
                         <th>Giá</th>
                         <th>Số lượng</th>
                         <th>Mô tả</th>
+                        <th>Hình ảnh</th>
                         <th>Mã loại</th>
                         <th>Nhà sản xuất</th>
                         <th>Hành động</th>
@@ -56,6 +57,15 @@ const Products = () => {
                             <td>{product.gia}</td>
                             <td>{product.soluong}</td>
                             <td>{product.mota}</td>
+                            <td>
+                                {product.hinh && (
+                                    <img
+                                        src={`http://127.0.0.1:8000/storage/${product.hinh}`}
+                                        alt={product.tensanpham}
+                                        style={{ width: "100px", height: "auto" }}
+                                    />
+                                )}
+                            </td>
                             <td>{product.maloai}</td>
                             <td>{product.manhasanxuat}</td>
                             <td>
@@ -67,7 +77,7 @@ const Products = () => {
                                 </Link>
                                 <button
                                     className="btn btn-danger btn-sm"
-                                    onClick={() => handleDelete(product.id)}
+                                    onClick={() => handleDelete(product.masanpham)}
                                 >
                                     Xóa
                                 </button>
