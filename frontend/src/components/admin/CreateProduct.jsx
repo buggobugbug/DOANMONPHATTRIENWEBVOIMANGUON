@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../services/api";
 
@@ -13,6 +13,32 @@ const CreateProduct = () => {
         manhasanxuat: "",
     });
     const [hinh, setHinh] = useState(null); // Lưu tệp hình ảnh
+    const [categories, setCategories] = useState([]); // Danh sách loại sản phẩm
+    const [manufacturers, setManufacturers] = useState([]); // Danh sách nhà sản xuất
+
+    // Lấy danh sách loại sản phẩm và nhà sản xuất khi component mount
+    useEffect(() => {
+        fetchCategories();
+        fetchManufacturers();
+    }, []);
+
+    const fetchCategories = async () => {
+        try {
+            const response = await api.get("/categories");
+            setCategories(response.data);
+        } catch (error) {
+            console.error("Error fetching categories:", error);
+        }
+    };
+
+    const fetchManufacturers = async () => {
+        try {
+            const response = await api.get("/manufacturers");
+            setManufacturers(response.data);
+        } catch (error) {
+            console.error("Error fetching manufacturers:", error);
+        }
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -20,7 +46,7 @@ const CreateProduct = () => {
     };
 
     const handleFileChange = (e) => {
-        setHinh(e.target.files[0]); // Lấy tệp hình ảnh được chọn
+        setHinh(e.target.files[0]); 
     };
 
     const handleSubmit = async (e) => {
@@ -39,7 +65,7 @@ const CreateProduct = () => {
 
             await api.post("/products", formDataToSend, {
                 headers: {
-                    "Content-Type": "multipart/form-data", // Định nghĩa kiểu dữ liệu
+                    "Content-Type": "multipart/form-data",
                 },
             });
 
@@ -100,25 +126,40 @@ const CreateProduct = () => {
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Mã loại</label>
-                    <input
-                        type="text"
+                    <select
                         className="form-control"
                         name="maloai"
                         value={formData.maloai}
                         onChange={handleChange}
                         required
-                    />
+                    >
+                        <option value="">-- Chọn loại sản phẩm --</option>
+                        {categories.map((category) => (
+                            <option key={category.maloai} value={category.maloai}>
+                                {category.tenloai}
+                            </option>
+                        ))}
+                    </select>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Nhà sản xuất</label>
-                    <input
-                        type="text"
+                    <select
                         className="form-control"
                         name="manhasanxuat"
                         value={formData.manhasanxuat}
                         onChange={handleChange}
                         required
-                    />
+                    >
+                        <option value="">-- Chọn nhà sản xuất --</option>
+                        {manufacturers.map((manufacturer) => (
+                            <option
+                                key={manufacturer.manhasanxuat}
+                                value={manufacturer.manhasanxuat}
+                            >
+                                {manufacturer.tennhasanxuat}
+                            </option>
+                        ))}
+                    </select>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Hình ảnh</label>
@@ -126,7 +167,7 @@ const CreateProduct = () => {
                         type="file"
                         className="form-control"
                         onChange={handleFileChange}
-                        accept="image/*" // Chỉ cho phép chọn tệp ảnh
+                        accept="image/*"
                     />
                 </div>
                 <button type="submit" className="btn btn-primary">

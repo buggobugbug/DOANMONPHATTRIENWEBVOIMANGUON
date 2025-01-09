@@ -9,19 +9,17 @@ import CreateProduct from './components/admin/CreateProduct';
 import EditProduct from './components/admin/EditProduct';
 import Categories from './components/admin/Categories';
 import Manufacturers from './components/admin/Manufacturers';
+import Users from './components/admin/Users';
+import CreateUser from './components/admin/CreateUser';
+import EditUser from './components/admin/EditUser'; // Import component EditUser
 import PrivateRoute from './components/PrivateRoute';
 
 const App = () => {
     return (
         <Router>
             <Routes>
-                {/* Route đăng nhập */}
                 <Route path="/login" element={<Login />} />
-
-                {/* Route đăng ký */}
                 <Route path="/register" element={<Register />} />
-
-                {/* Route Dashboard */}
                 <Route
                     path="/dashboard"
                     element={
@@ -30,19 +28,15 @@ const App = () => {
                         </PrivateRoute>
                     }
                 >
-                    {/* Route con cho sản phẩm */}
                     <Route path="products" element={<Products />} />
                     <Route path="create" element={<CreateProduct />} />
                     <Route path="edit/:id" element={<EditProduct />} />
-
-                    {/* Route con cho Loại sản phẩm */}
                     <Route path="categories" element={<Categories />} />
-
-                    {/* Route con cho Nhà sản xuất */}
                     <Route path="manufacturers" element={<Manufacturers />} />
+                    <Route path="accounts" element={<Users />} />
+                    <Route path="create-user" element={<CreateUser />} />
+                    <Route path="edit-user/:id" element={<EditUser />} /> {/* Route chỉnh sửa người dùng */}
                 </Route>
-
-                {/* Route Home */}
                 <Route
                     path="/home"
                     element={
@@ -51,8 +45,6 @@ const App = () => {
                         </PrivateRoute>
                     }
                 />
-
-                {/* Route mặc định */}
                 <Route path="/" element={<Login />} />
             </Routes>
         </Router>

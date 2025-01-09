@@ -44,7 +44,7 @@ const Products = () => {
                         <th>Số lượng</th>
                         <th>Mô tả</th>
                         <th>Hình ảnh</th>
-                        <th>Mã loại</th>
+                        <th>Loại sản phẩm</th>
                         <th>Nhà sản xuất</th>
                         <th>Hành động</th>
                     </tr>
@@ -66,8 +66,8 @@ const Products = () => {
                                     />
                                 )}
                             </td>
-                            <td>{product.maloai}</td>
-                            <td>{product.manhasanxuat}</td>
+                            <td>{product.loaisanpham?.tenloai || "Không xác định"}</td>
+                            <td>{product.nhasanxuat?.tennhasanxuat || "Không xác định"}</td>
                             <td>
                                 <Link
                                     to={`/dashboard/edit/${product.masanpham}`}
