@@ -13,7 +13,10 @@ use App\Http\Controllers\GiohangController;
 Route::post('/register', [AuthController::class, 'register']);
 
 // Route đăng nhập
-Route::post('/login', [AuthController::class, 'login']);
+// Route::post('/login', [AuthController::class, 'login']);
+Route::prefix('api')->group(function () {
+    Route::post('/login', [AuthController::class, 'login']);
+});
 
 // Route đăng xuất (yêu cầu token xác thực)
 Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);

@@ -38,11 +38,19 @@ const App = () => {
                     <Route path="edit-user/:id" element={<EditUser />} /> {/* Route chỉnh sửa người dùng */}
                 </Route>
                 <Route
-                    path="/home"
+                    path="/home/*"
                     element={
-                        <PrivateRoute allowedRoles={[2]}>
-                            <Home />
-                        </PrivateRoute>
+                        <>
+                            <Header />
+                            <Routes>
+                                <Route path="/" element={<Home />} />
+                                <Route path="/product/:id" element={<ProductDetail />} />
+                                <Route path="/cart" element={<CartPage />} />
+                                <Route path="/checkout" element={<CheckoutPage />} />
+                                <Route path="/profile" element={<UserProfilePage />} /> {/* Thêm trang thông tin người dùng */}
+                            </Routes>
+                            <Footer />
+                        </>
                     }
                 />
                 <Route path="/" element={<Login />} />
