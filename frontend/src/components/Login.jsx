@@ -23,6 +23,7 @@ const Login = () => {
             // Lưu token và thông tin người dùng
             localStorage.setItem('authToken', token);
             localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('manguoidung', user.id); // Lưu mã người dùng (ID)
 
             // Chuyển hướng dựa vào vai trò
             if (user.ma_vai_tro === 1) {

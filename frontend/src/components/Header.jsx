@@ -3,6 +3,7 @@ import './Header.css';
 import { useNavigate } from 'react-router-dom';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ListAltIcon from '@mui/icons-material/ListAlt'; // Icon cho danh sách đơn hàng
 
 const Header = () => {
     const navigate = useNavigate();
@@ -40,22 +41,32 @@ const Header = () => {
                     />
                 </div>
                 <div className="header-actions">
+                    {/* Icon Trang Cá Nhân */}
                     <div
                         className="action-item"
-                        onClick={() => navigate('/home/profile')} // Thay đổi route để chuyển đến UserProfilePage
+                        onClick={() => navigate('/home/profile')}
                         style={{ position: 'relative', cursor: 'pointer' }}
                     >
                         <AccountCircleIcon style={{ fontSize: '28px' }} />
                     </div>
 
+                    {/* Icon Giỏ Hàng */}
                     <div
                         className="action-item"
                         onClick={() => navigate('/home/cart')}
                         style={{ position: 'relative', cursor: 'pointer' }}
                     >
                         <ShoppingCartIcon style={{ fontSize: '28px' }} />
-                        {/* Badge hiển thị số lượng sản phẩm trong giỏ hàng */}
-                        <span className="cart-badge">0</span>
+                        <span className="cart-badge">0</span> {/* Badge số lượng sản phẩm */}
+                    </div>
+
+                    {/* Icon Danh Sách Đơn Hàng */}
+                    <div
+                        className="action-item"
+                        onClick={() => navigate('/home/orders')}
+                        style={{ position: 'relative', cursor: 'pointer' }}
+                    >
+                        <ListAltIcon style={{ fontSize: '28px' }} />
                     </div>
                 </div>
             </div>

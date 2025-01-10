@@ -1,0 +1,96 @@
+.orders-container {
+    margin: 40px auto; /* Căn giữa container */
+    padding: 20px;
+    max-width: 1000px; /* Giới hạn chiều rộng */
+    background-color: #f8f9fa; /* Màu nền sáng */
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+}
+
+.orders-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #007bff; /* Xanh dương */
+    margin-bottom: 20px;
+    text-align: center; /* Căn giữa tiêu đề */
+}
+
+.loading-spinner {
+    display: block;
+    margin: 20px auto;
+}
+
+.error-alert, .no-orders-alert {
+    margin-top: 20px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.orders-table-container {
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.orders-table {
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    border-collapse: collapse; /* Xóa khoảng cách giữa các ô */
+    background-color: #ffffff;
+    text-align: left;
+}
+
+.table-header-row {
+    background-color: #007bff; /* Xanh dương */
+}
+
+.table-header-cell {
+    color: white;
+    font-weight: bold;
+    padding: 12px;
+    text-align: center; /* Căn giữa nội dung tiêu đề */
+}
+
+.table-body-row {
+    transition: background-color 0.3s ease;
+}
+
+.table-body-row:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
+.table-body-cell {
+    padding: 12px;
+    font-size: 0.95rem;
+    text-align: center; /* Căn giữa nội dung */
+}
+
+.order-detail {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.order-detail-product {
+    font-size: 0.95rem;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .orders-container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .orders-title {
+        font-size: 1.5rem;
+    }
+
+    .orders-table {
+        font-size: 0.85rem; /* Giảm kích thước chữ trên màn hình nhỏ */
+    }
+
+    .table-header-cell, .table-body-cell {
+        padding: 8px;
+    }
+}

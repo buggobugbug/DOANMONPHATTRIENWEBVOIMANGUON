@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import api from "../../services/api";
+import api, { deleteProduct } from "../../services/api"; // Import đúng hàm deleteProduct
 
 const Products = () => {
     const [products, setProducts] = useState([]);
@@ -19,12 +19,14 @@ const Products = () => {
     };
 
     const handleDelete = async (id) => {
+        console.log("Deleting product ID:", id); // Log ID sản phẩm
         if (window.confirm("Bạn có chắc chắn muốn xóa sản phẩm này?")) {
             try {
-                await api.delete(`/products/${id}`);
+                await deleteProduct(id); // Gọi hàm deleteProduct
+                console.log("Product deleted successfully");
                 fetchProducts(); // Refresh product list
             } catch (error) {
-                console.error("Error deleting product:", error);
+                console.error("Error deleting product:", error.response?.data || error.message);
             }
         }
     };

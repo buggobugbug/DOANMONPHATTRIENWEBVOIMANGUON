@@ -41,7 +41,7 @@ const Register = () => {
             alert(response.data.message);
         } catch (error) {
             console.error(error.response?.data?.errors); // In chi tiết lỗi
-            alert('Đăng ký thất bại! Vui lòng kiểm tra dữ liệu.');
+            alert('Tên đăng nhập đã tồn tại, vui lòng điền tên đăng nhập khác');
         }
     };
 

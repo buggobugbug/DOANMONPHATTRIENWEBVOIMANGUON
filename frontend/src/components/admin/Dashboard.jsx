@@ -50,6 +50,9 @@ const Dashboard = () => {
                     <li>
                         <Link to="/dashboard/accounts">Tài khoản người dùng</Link>
                     </li>
+                    <li>
+                        <Link to="/dashboard/statistics">Thống kê</Link>
+                    </li>
                     <li onClick={onLogout}>
                         <a href="#">Đăng xuất</a>
                     </li>

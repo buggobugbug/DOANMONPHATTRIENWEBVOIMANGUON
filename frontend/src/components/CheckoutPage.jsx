@@ -6,9 +6,8 @@ import {
     TextField,
     Button,
     Grid,
-    Card,
-    CardContent,
-    CardMedia,
+    Paper,
+    Divider,
     CircularProgress,
     Alert,
 } from '@mui/material';
@@ -78,31 +77,34 @@ const CheckoutPage = () => {
                 {/* Hiển thị sản phẩm trong giỏ hàng */}
                 <Grid item xs={12} md={8} className="cart-items-container">
                     {cartItems.length > 0 ? (
-                        cartItems.map((item) => (
-                            <Card key={item.id} className="cart-item">
-                                <CardMedia
-                                    component="img"
-                                    height="140"
-                                    image={`http://127.0.0.1:8000/storage/${item.sanpham.hinh}`}
-                                    alt={item.sanpham.tensanpham}
-                                    className="cart-item-image"
-                                />
-                                <CardContent className="cart-item-content">
-                                    <Typography variant="h6" className="cart-item-title">
-                                        {item.sanpham.tensanpham}
-                                    </Typography>
-                                    <Typography className="cart-item-price">
-                                        Giá: {item.sanpham.gia.toLocaleString('vi-VN')} VNĐ
-                                    </Typography>
-                                    <Typography className="cart-item-quantity">
-                                        Số lượng: {item.so_luong}
-                                    </Typography>
-                                    <Typography className="cart-item-total">
-                                        Thành tiền: {(item.sanpham.gia * item.so_luong).toLocaleString('vi-VN')} VNĐ
-                                    </Typography>
-                                </CardContent>
-                            </Card>
-                        ))
+                        <Paper className="cart-items-list">
+                            {cartItems.map((item) => (
+                                <div key={item.id} className="cart-item-row">
+                                    <div className="cart-item-image-container">
+                                        <img
+                                            src={`http://127.0.0.1:8000/storage/${item.sanpham.hinh}`}
+                                            alt={item.sanpham.tensanpham}
+                                            className="cart-item-image"
+                                        />
+                                    </div>
+                                    <div className="cart-item-details">
+                                        <Typography variant="h6" className="cart-item-title">
+                                            {item.sanpham.tensanpham}
+                                        </Typography>
+                                        <Typography className="cart-item-price">
+                                            Giá: {item.sanpham.gia.toLocaleString('vi-VN')} VNĐ
+                                        </Typography>
+                                        <Typography className="cart-item-quantity">
+                                            Số lượng: {item.so_luong}
+                                        </Typography>
+                                        <Typography className="cart-item-total">
+                                            Thành tiền: {(item.sanpham.gia * item.so_luong).toLocaleString('vi-VN')} VNĐ
+                                        </Typography>
+                                    </div>
+                                    <Divider className="cart-item-divider" />
+                                </div>
+                            ))}
+                        </Paper>
                     ) : (
                         <Typography variant="h6">Giỏ hàng của bạn đang trống.</Typography>
                     )}
