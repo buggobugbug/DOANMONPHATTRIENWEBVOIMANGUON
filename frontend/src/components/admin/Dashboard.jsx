@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import '../css/Dashboard.css';
+import '../css/Dashboard.css'; // Sử dụng CSS đã cập nhật
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -26,13 +26,12 @@ const Dashboard = () => {
     };
 
     return (
-        <div className="dashboard-container">
+        <div className="dashboard-layout">
             <div className="sidebar">
                 <Link to="/dashboard" className="dashboard-title">
                     <h2>Quản trị</h2>
                 </Link>
                 <ul>
-                    {/* Các liên kết đến các trang quản lý */}
                     <li>
                         <Link to="/dashboard/products">Sản phẩm</Link>
                     </li>
@@ -52,7 +51,7 @@ const Dashboard = () => {
                         <Link to="/dashboard/accounts">Tài khoản người dùng</Link>
                     </li>
                     <li onClick={onLogout}>
-                        <span>Đăng xuất</span>
+                        <a href="#">Đăng xuất</a>
                     </li>
                 </ul>
             </div>
@@ -61,9 +60,12 @@ const Dashboard = () => {
                 <header className="admin-header">
                     <h1>Dashboard</h1>
                 </header>
-                <main>
-                    <Outlet /> {/* Render các component con tại đây */}
+                <main className="admin-content">
+                    <Outlet /> {/* Render các component con */}
                 </main>
+                <footer className="admin-footer">
+                    &copy; 2025 - Quản trị hệ thống Bike Shop
+                </footer>
             </div>
         </div>
     );
