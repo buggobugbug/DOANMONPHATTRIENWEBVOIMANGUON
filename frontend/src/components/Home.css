@@ -1,0 +1,50 @@
+.product-card .MuiCardContent-root {
+    padding: 16px;
+    text-align: left; /* Căn chỉnh nội dung sang bên trái */
+}
+
+.product-card {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    height: 300px;
+    width: 230px;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    transition: 1s;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+    height: 150px;
+    object-fit: cover;
+}
+
+.product-card .MuiCardContent-root {
+    padding: 16px;
+    text-align: center;
+}
+
+.product-card .MuiTypography-h6 {
+    text-transform: uppercase; /* In hoa tên sản phẩm */
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.product-card .MuiTypography-body2 {
+    color: #388e3c; /* Màu xanh cho giá */
+    font-weight: bold;
+}
+
+.main-content {
+    margin: 0; /* Loại bỏ margin và ghi đè mọi CSS khác */
+    padding: 20px; /* Bạn có thể giữ padding hoặc điều chỉnh */
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #f8f8f8; /* Hoặc màu nền khác nếu muốn */
+}
